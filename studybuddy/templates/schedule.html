@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}StudyBuddy - My Meetings{% endblock title %}
+
+{% block content %}
+
+<!--User-->
+<br><br>
+<div class="container mx-auto">
+    <div class="card-rows">
+		
+
+				<h4 class="card-title font-weight-bold text-center"> Coming Up </h4>
+				<hr>
+
+					{% for meeting in meetings %}
+                        <div class="card p-4">
+                        <div class="card-text">
+                        <center> <p> Time: {{ meeting.time }} </p> </center>
+						<center> <p> Course: {{ meeting.common_course }} </p> </center>
+                        <center> <p> Location: {{ meeting.location }} </p> </center>
+                        <center> <p> Other Attendees:</p> </center>
+                    {% for person in meeting.study_buddies.all %}
+                    {% if person != user.profile %}
+                        <center> <p> {{ person }} </p> </center>
+                    {% endif %}
+
+                    {% endfor %}
+                    <form method="post" action = "{% url 'schedule' %}">
+						{% csrf_token %}
+                        <input type="hidden" value="{{meeting.id}}" name="meeting_pk">
+                        <center><button type="submit" name="remove_meeting" class="btn btn-danger btn-sm"> REMOVE MEETING </button></center>
+                    </form>
+                            </div>
+                        </div>
+					{% endfor %}
+
+		
+		</div>
+
+			
+			<form method="post" action = "/schedule_meeting/">
+					{% csrf_token %}
+					<input type="hidden" value="{{classmate}}" name="classmates">
+		<!--						<center><button type="btn btn-primary" name="schedule" class="btn btn-primary"> Schedule </button></center>-->
+				<center><a class="btn btn-primary btn-lg" href="/schedule_meeting" role="button">Schedule Meetings</a></center>
+				</form>
+            </div>
+    </div>
+	
+
+
+{% endblock content %}

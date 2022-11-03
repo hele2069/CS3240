@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}StudyBuddy - About{% endblock title %}
+{% load static %}
+{% block content %}
+<div class="about-section">
+    <h1 style="text-align:center">About Study Buddy</h1>   
+    <p>
+      Study Buddy is a Django based web-app created as a course project
+      for CS 3240. This web-app matches UVA students with other students,
+      which allow them to chat and schedule times to study with each other.
+    </p> 
+  </div>
+  
+  <h2 style="text-align:center">Our Team</h2>
+
+      
+  <div class="card-rows">
+
+      <div class="card">
+        <div class="container">
+          <h2>Tony Le</h2>
+          <p class="title">Scrum Master</p>
+          <p>The Scrum Master is responsbile for keeping everyone on track, facilitating all team meetings, and monitoring team status / issues.</p>
+          <p>hnl7vwd@virginia.edu</p>
+          <p><button class="button" onclick="window.location.href = 'mailto:hnl7vwd@virginia.edu';">Contact</button></p>
+        </div>
+        </div>
+
+    
+
+        <div class="card">
+          <div class="container">
+            <h2>Richard He</h2>
+            <p class="title">Requirements Manager</p>
+            <p>The Requirements Manager is responsible for keeping up with “what” it is you are building.                                </p>
+            <p>yh9vhg@virginia.edu</p>
+            <p><button class="button" onclick="window.location.href = 'mailto:yh9vhg@virginia.edu';">Contact</button></p>
+          </div>
+        </div>
+  
+  
+      <div class="card">
+        <div class="container">
+          <h2>Rohit Rajuladevi</h2>
+          <p class="title">DevOps Manager</p>
+          <p>The DevOps Manager is the support tech for the team in a sense. They are responsible for the management and support of all the systems, namely GitHub, GitHub Actions, and Heroku.</p>
+          <p>rsr4qd@virginia.edu</p>
+          <p><button class="button" onclick="window.location.href = 'mailto:rsr4qd@virginia.edu';">Contact</button></p>
+        </div>
+      </div>
+
+
+
+    <div class="card">
+      <div class="container">
+        <h2>Cory Ooten</h2>
+        <p class="title">UX Designer</p>
+        <p>The UX (user experience) Designer is responsible for the overall look-and-feel of the project. They are responsible coming up with the design of the overall app and managing the styling on all pages.</p>
+        <p>cmo8vnv@virginia.edu</p>
+        <p><button class="button" onclick="window.location.href = 'mailto:cmo8vnv@virginia.edu';">Contact</button></p>
+      </div>
+    </div>
+
+
+
+    <div class="card">
+      <div class="container">
+        <h2>Mark Haas</h2>
+        <p class="title">Testing Manager</p>
+        <p>The Testing Manager is responsible for ensuring that the system is thoroughly tested, for developing the overall testing plan/philosophy of the team.</p>
+        <p>mah3fw@virginia.edu</p>
+        <p><button class="button" onclick="window.location.href = 'mailto:mah3fw@virginia.edu';">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+          
+{% endblock content %}

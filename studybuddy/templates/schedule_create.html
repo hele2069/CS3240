@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}StudyBuddy - Schedule Meetings{% endblock title %}
+{% load static %}
+{% block content %}
+
+
+<script src="{% url 'js-catalog' %}"></script>
+<script src="{% static '/admin/js/core.js' %}"></script>
+<!--<link rel="stylesheet" href="{% static 'admin/css/base.css' %}">-->
+<link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+<form method='POST'> {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <input type='submit' value='Save' />
+</form>
+
+{% endblock %}

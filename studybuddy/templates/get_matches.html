@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}StudyBuddy - Match With Students{% endblock title %}
+
+{% block content %}
+
+<!--User-->
+<br><br>
+<div class="container mx-auto">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-3 pb-4">
+				<h4 class="card-title font-weight-bold text-center"> Matches </h4>
+				<hr>
+					{% for classmate in unique_classmates %}
+					<div class="card p-4">
+					<div class="card-text">
+						<center> <p> {{ classmate }} </p> </center>
+						<form method="post" action = "match/">
+							{% csrf_token %}
+							<input type="hidden" value="{{classmate}}" name="classmate">
+                            <center><button type="btn btn-primary" name="chat_button" class="btn btn-primary"> Chat with Student </button></center>
+<!--							<center><a class="btn btn-primary btn-lg" href="/schedule_meeting" role="button">Schedule</a></center>-->
+						</form>
+<!--					<form method="post" action = "/schedule_meeting/">-->
+<!--						{% csrf_token %}-->
+<!--						<input type="hidden" value="{{classmate}}" name="classmates">-->
+<!--&lt;!&ndash;						<center><button type="btn btn-primary" name="schedule" class="btn btn-primary"> Schedule </button></center>&ndash;&gt;-->
+<!--						<center><a class="btn btn-primary btn-lg" href="/schedule_meeting" role="button">Schedule</a></center>-->
+<!--					</form>-->
+
+					<center> <p> Also Looking For: </p> </center>
+					{% for class in user.profile.toggled_courses.all %}
+					{% if class in classmate.toggled_courses.all %}
+						<center> <p> {{ class }} </p> </center>
+					{% endif %}
+					{% endfor %}
+					</div>
+
+					</div>
+					{% endfor %}
+
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+<!--
+    <center>
+        {% if searched %}
+            <h1>You Searched For {{ searched }}</h1>
+                {% for course in courses %}
+                    <br/>
+                    {{ course.subject }} {{ course.number }} - {{ course.instructor }}
+                    <br/>
+                {% endfor %}
+        {% else %}
+            <h1>Search for Course</h1>
+        {% endif %}
+    </center>
+-->

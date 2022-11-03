@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}StudyBuddy - My Courses{% endblock title %}
+
+{% block content %}
+
+<!--User-->
+<br><br>
+<div class="container mx-auto">
+	<div class="card-row">
+	
+
+
+				<h4 class="card-title font-weight-bold text-center"> My Course List </h4>
+				<hr>
+
+
+					{% for course in user.profile.courses.all %}
+
+						<div class="card p-4">
+						<div class="card-row">
+
+
+
+						<center> <p>  {{ course.subject }} {{ course.number }} {{ course.instructor }} </p> </center>
+
+						<form method="post" action = "{% url 'remove_courses' %}">
+							{% csrf_token %}
+							<input type="hidden" value="{{course.pk}}" name="course_pk">
+							<center>
+
+
+							{% if course in user.profile.toggled_courses.all %}
+							<button type="submit" name="toggle_off" class="btn btn-primary"> Toggle Off</button>
+							{% else %}
+							<button type="submit" name="toggle_on" class="btn btn-primary"> Toggle On</button>
+							{% endif %}
+								<br> <br>
+								<button type="submit" name="remove" class="btn btn-danger btn-sm"> Remove Class </button>
+							</center>
+						</form>
+
+						</div>
+						</div>
+
+					{% endfor %}
+
+
+		<div class="col-sm-12 col-md-12 col-lg-9 pb-4">
+			<div class="row">
+				<form class="d-flex" method="post" action = "{% url 'search_courses' %}">
+					{% csrf_token %}
+					<input class="form-control me-2" type="search" placeholder="Search Courses" aria-label="Search" name="searched">
+					<button class="btn btn-outline-secondary" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

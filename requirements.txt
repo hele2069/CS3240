@@ -1,0 +1,13 @@
+Django
+django-bootstrap-v5
+gunicorn
+django-heroku
+psycopg2
+social-auth-app-django
+Pillow
+python-dotenv
+faker
+twilio
+dj-database-url
+flask
+whitenoise
