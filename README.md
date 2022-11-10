@@ -1,2 +1,4 @@
-# group-project-b-14
+# Final Project for CS 3240
+### Django Framework
+### Deployed on Heroku
 
